@@ -13,6 +13,8 @@ const nextBtn = document.getElementById('next');
 // Current Song
 let songIndex = 0;
 
+let clickedOnPlayBtn = false;
+
 // Music
 const songs = [
     {
@@ -43,6 +45,7 @@ let isPlaying = false;
 // Play
 function playSong() {
     isPlaying = true;
+    clickedOnPlayBtn = true;
     playBtn.classList.replace('fa-play', 'fa-pause');
     playBtn.setAttribute('title', 'Pause');
     music.play();
@@ -131,5 +134,9 @@ document.addEventListener('keyup', event => {
         } else {
             playSong();
         }
+    } else if (clickedOnPlayBtn === true && event.code === 'ArrowRight') {
+        nextSong();
+    } else if (clickedOnPlayBtn === true && event.code === 'ArrowLeft') {
+        prevSong();
     }
 });
