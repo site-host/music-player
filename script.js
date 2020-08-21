@@ -90,12 +90,13 @@ playBtn.addEventListener('click', () => (isPlaying ? pauseSong() : playSong()));
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
 
-document.body.onkeyup = function(e){
-    if(e.keyCode == 32){
+// event = keyup or keydown
+document.addEventListener('keyup', event => {
+    if (event.code === 'Space') {
         if (isPlaying === true) {
             pauseSong();
         } else {
             playSong();
         }
     }
-}
+  })
